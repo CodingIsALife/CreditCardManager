@@ -17,6 +17,7 @@ namespace _260FinalProject_CardManager
     {
         
         public int numCards = 1;
+        SqlConnection sql = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Users\Landon\source\repos\260FinalProject_CardManager\260FinalProject_CardManager\CreditCardInfo.mdf;Integrated Security = True; Connect Timeout = 30");
 
         public Form1()
         {
@@ -52,13 +53,12 @@ namespace _260FinalProject_CardManager
         {
             // TODO: This line of code loads data into the 'theDatabaseSetYourLookingFor.Table' table. You can move, or remove it, as needed.
 
-
-            
-            
             this.tableTableAdapter1.Fill(this.theDatabaseSetYourLookingFor.Table);
-
+            int i = 0;
             foreach (DataGridViewRow r in dataGridView1.Rows)
             {
+                ++i;
+                r.Cells["rowNumber"].Value = i;
                 Bitmap logo;
 
                 //choosing the card icon
@@ -127,8 +127,12 @@ namespace _260FinalProject_CardManager
 
         private void dataGridView1_CellContentClick_1()
         {
-
+            //this.Validate();
+            //this.dataGridView1.BindingContext[theDatabaseSetYourLookingFor].EndCurrentEdit();
+            tableBindingSource4.EndEdit();
+            theDatabaseSetYourLookingFor.GetChanges();
             tableTableAdapter1.Update(theDatabaseSetYourLookingFor.Table);
+            theDatabaseSetYourLookingFor.AcceptChanges();
             loadDataGrid();
         }
 
@@ -145,6 +149,28 @@ namespace _260FinalProject_CardManager
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach(DataGridViewRow r in dataGridView1.SelectedRows)
+            {
+                string cardSelected = (string)r.Cells["cardNumber"].Value.ToString();
+                tableTableAdapter1.Delete(cardSelected);                                                
+                theDatabaseSetYourLookingFor.AcceptChanges();
+                tableTableAdapter1.Update(theDatabaseSetYourLookingFor.Table);
+
+
+                sql.Open();
+                SqlCommand command = new SqlCommand("DELETE FROM [dbo].[Table] WHERE \"Card Number\"=@val1", sql);
+
+                command.Parameters.AddWithValue("@val1", cardSelected);
+                command.ExecuteNonQuery();
+                sql.Close();
+
+
+            }
+            dataGridView1_CellContentClick_1();            
         }
     }
 }

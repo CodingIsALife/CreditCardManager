@@ -49,14 +49,15 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.tableTableAdapter1 = new _260FinalProject_CardManager.TheDatabaseSetYourLookingForTableAdapters.TableTableAdapter();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.rowNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.logo = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.company = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cardNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.secNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cardFlowPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource4)).BeginInit();
@@ -85,7 +86,7 @@
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
@@ -95,11 +96,12 @@
             this.dataGridView1.ColumnHeadersHeight = 35;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.rowNumber,
             this.logo,
-            this.dataGridViewTextBoxColumn3,
+            this.company,
             this.cardNumber,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn4});
+            this.expDate,
+            this.secNum});
             this.dataGridView1.DataSource = this.tableBindingSource4;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -114,6 +116,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -170,8 +173,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(194, 43);
             this.button3.TabIndex = 3;
-            this.button3.Text = "not implemented";
+            this.button3.Text = "Delete a Card";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -247,14 +251,6 @@
             // 
             this.tableTableAdapter1.ClearBeforeFill = true;
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "Card Type";
-            this.dataGridViewImageColumn1.Image = global::_260FinalProject_CardManager.Properties.Resources.unknown;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(548, 138);
@@ -275,58 +271,78 @@
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.FillWeight = 10F;
+            this.dataGridViewImageColumn1.HeaderText = "Card Type";
+            this.dataGridViewImageColumn1.Image = global::_260FinalProject_CardManager.Properties.Resources.unknown;
+            this.dataGridViewImageColumn1.MinimumWidth = 90;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn1.Width = 90;
+            // 
+            // rowNumber
+            // 
+            this.rowNumber.HeaderText = "#";
+            this.rowNumber.MinimumWidth = 20;
+            this.rowNumber.Name = "rowNumber";
+            this.rowNumber.ReadOnly = true;
+            this.rowNumber.Width = 20;
+            // 
             // logo
             // 
             this.logo.FillWeight = 10F;
             this.logo.HeaderText = "Card Type";
             this.logo.Image = global::_260FinalProject_CardManager.Properties.Resources.unknown;
-            this.logo.MinimumWidth = 90;
+            this.logo.MinimumWidth = 70;
             this.logo.Name = "logo";
             this.logo.ReadOnly = true;
             this.logo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.logo.Width = 90;
+            this.logo.Width = 70;
             // 
-            // dataGridViewTextBoxColumn3
+            // company
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Card Company";
+            this.company.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.company.DataPropertyName = "Card Company";
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Card Company";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 110;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.company.DefaultCellStyle = dataGridViewCellStyle2;
+            this.company.HeaderText = "Card Company";
+            this.company.MinimumWidth = 110;
+            this.company.Name = "company";
+            this.company.ReadOnly = true;
+            this.company.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // cardNumber
             // 
             this.cardNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.cardNumber.DataPropertyName = "Card Number";
             this.cardNumber.HeaderText = "Card Number";
-            this.cardNumber.MinimumWidth = 110;
+            this.cardNumber.MinimumWidth = 150;
             this.cardNumber.Name = "cardNumber";
             this.cardNumber.ReadOnly = true;
             this.cardNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // dataGridViewTextBoxColumn2
+            // expDate
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Card Exp";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Card Exp";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 110;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.expDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.expDate.DataPropertyName = "Card Exp";
+            this.expDate.HeaderText = "Card Exp";
+            this.expDate.MinimumWidth = 80;
+            this.expDate.Name = "expDate";
+            this.expDate.ReadOnly = true;
+            this.expDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // dataGridViewTextBoxColumn4
+            // secNum
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Card Security Number";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Card Security Number";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 90;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.secNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.secNum.DataPropertyName = "Card Security Number";
+            this.secNum.HeaderText = "Card Security Number";
+            this.secNum.MinimumWidth = 90;
+            this.secNum.Name = "secNum";
+            this.secNum.ReadOnly = true;
+            this.secNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Form1
             // 
@@ -382,11 +398,12 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rowNumber;
         private System.Windows.Forms.DataGridViewImageColumn logo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn company;
         private System.Windows.Forms.DataGridViewTextBoxColumn cardNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn secNum;
     }
 }
 
