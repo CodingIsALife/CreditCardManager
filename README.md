@@ -1,0 +1,2 @@
+# CreditCardManager
+A school project
