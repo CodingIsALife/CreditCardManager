@@ -11,13 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace _260FinalProject_CardManager
-{
+{ 
     public partial class Form1 : Form
     {
         
         public int numCards = 1;
         SqlConnection sql = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Users\Landon\source\repos\260FinalProject_CardManager\260FinalProject_CardManager\CreditCardInfo.mdf;Integrated Security = True; Connect Timeout = 30");
+
+
 
         public Form1()
         {
@@ -172,5 +175,79 @@ namespace _260FinalProject_CardManager
             }
             dataGridView1_CellContentClick_1();            
         }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            //number of monthly payments
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            //total payment ammount
+        }
+
+        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            //interest rate
+        }
+
+        private void maskedTextBox3_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            //monthly payment
+        }
+
+        public void button2_Click(object sender, EventArgs e)
+        {
+            //make payment calculations button
+            string holder;
+            float interest = 0;
+            float monthly = 0;
+            float totPay = 0;
+
+            interest = float.Parse(maskedTextBox2.Text.ToString()) /100;
+            monthly = float.Parse(maskedTextBox3.Text.ToString()) /100;
+            totPay = float.Parse(maskedTextBox1.Text.ToString()) /100;
+
+            float totPay100 = totPay * 100;
+            float interest100 = interest * 100;
+            float monthly100 = monthly * 100;
+            int months;
+
+
+            ReccuringPayments myRPayments = new ReccuringPayments();
+            months = myRPayments.SetRecPayments(totPay100, interest100, monthly100);
+
+            //months = _260FinalProject_CardManager.SetRecPayments(float totPay100, float interest100, float monthly100);
+
+            if (months == -1)
+            {
+                textBox5.Text = "Raise Ammount Per Month";
+            }
+            else
+            {
+                textBox5.Text = months.ToString();
+            }
+        }
     }
+
 }
