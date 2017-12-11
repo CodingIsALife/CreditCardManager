@@ -3,7 +3,8 @@ using _260FinalProject_CardManager;
 
 namespace _260FinalProject_CardManager
 {
-    //correct file
+    //correct class file
+    //this file contains classes built by Landon Frederes for the use of the card manager application
     public class Payment
     {
         private DateTime datetime;

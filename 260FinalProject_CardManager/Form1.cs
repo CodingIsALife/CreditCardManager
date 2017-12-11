@@ -43,7 +43,7 @@ namespace _260FinalProject_CardManager
 
             //add card
             //needs to create a card inside of the cardflowpanel when clicked.
-
+            dataGridView1_CellContentClick_1();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
