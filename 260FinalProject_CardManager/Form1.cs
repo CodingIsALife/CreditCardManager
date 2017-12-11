@@ -217,7 +217,6 @@ namespace _260FinalProject_CardManager
         public void button2_Click(object sender, EventArgs e)
         {
             //make payment calculations button
-            string holder;
             float interest = 0;
             float monthly = 0;
             float totPay = 0;
