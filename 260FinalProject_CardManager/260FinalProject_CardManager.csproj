@@ -73,11 +73,11 @@
     <Compile Include="Userinput.Designer.cs">
       <DependentUpon>Userinput.cs</DependentUpon>
     </Compile>
-    <Compile Include="AuthenticationForm - Copy.cs">
+    <Compile Include="AuthenticationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AuthenticationForm - Copy.Designer.cs">
-      <DependentUpon>AuthenticationForm - Copy.cs</DependentUpon>
+    <Compile Include="AuthenticationForm.Designer.cs">
+      <DependentUpon>AuthenticationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -101,8 +101,8 @@
     <EmbeddedResource Include="Userinput.resx">
       <DependentUpon>Userinput.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AuthenticationForm - Copy.resx">
-      <DependentUpon>AuthenticationForm - Copy.cs</DependentUpon>
+    <EmbeddedResource Include="AuthenticationForm.resx">
+      <DependentUpon>AuthenticationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

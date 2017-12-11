@@ -130,8 +130,6 @@ namespace _260FinalProject_CardManager
 
         private void dataGridView1_CellContentClick_1()
         {
-            //this.Validate();
-            //this.dataGridView1.BindingContext[theDatabaseSetYourLookingFor].EndCurrentEdit();
             tableBindingSource4.EndEdit();
             theDatabaseSetYourLookingFor.GetChanges();
             tableTableAdapter1.Update(theDatabaseSetYourLookingFor.Table);
@@ -223,6 +221,19 @@ namespace _260FinalProject_CardManager
             float interest = 0;
             float monthly = 0;
             float totPay = 0;
+
+            if (maskedTextBox3.Text.ToString() == "  .")
+            {
+                maskedTextBox3.Text = "0";
+            }
+            if (maskedTextBox2.Text.ToString() == "     .")
+            {
+                maskedTextBox2.Text = "0";
+            }
+            if (maskedTextBox1.Text.ToString() == "     .")
+            {
+                maskedTextBox1.Text = "0";
+            }
 
             interest = float.Parse(maskedTextBox2.Text.ToString()) /100;
             monthly = float.Parse(maskedTextBox3.Text.ToString()) /100;

@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Do not close out of this window. Enter a new username and password, then hit the accept button. Do not forget your credentials. Do not enter any sensitive data into this program, as it is not currently tested for complete security.</value>
+  </data>
 </root>
