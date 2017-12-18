@@ -24,7 +24,9 @@ namespace _260FinalProject_CardManager
 
             bool runAuth = true;
             bool userGotIn = false;
-            SqlConnection sql = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Users\Landon\source\repos\260FinalProject_CardManager\260FinalProject_CardManager\CreditCardInfo.mdf;Integrated Security = True; Connect Timeout = 30");
+            Uri uri = new Uri(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            string path = System.IO.Path.GetDirectoryName(uri.LocalPath);
+            SqlConnection sql = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" +path + "\\CreditCardInfo.mdf;Integrated Security = True; Connect Timeout = 30");
             addNewUser form2 = new addNewUser();
             Authentication form3 = new Authentication();
             DialogResult dr;

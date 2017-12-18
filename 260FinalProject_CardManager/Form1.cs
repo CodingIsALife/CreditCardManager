@@ -18,13 +18,10 @@ namespace _260FinalProject_CardManager
     {
         
         public int numCards = 1;
-        SqlConnection sql = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Users\Landon\source\repos\260FinalProject_CardManager\260FinalProject_CardManager\CreditCardInfo.mdf;Integrated Security = True; Connect Timeout = 30");
-
-
-
+        
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void CardFlowPanel(object sender, PaintEventArgs e)
@@ -160,8 +157,9 @@ namespace _260FinalProject_CardManager
                 tableTableAdapter1.Delete(cardSelected);                                                
                 theDatabaseSetYourLookingFor.AcceptChanges();
                 tableTableAdapter1.Update(theDatabaseSetYourLookingFor.Table);
-
-
+                Uri uri = new Uri(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                string path = System.IO.Path.GetDirectoryName(uri.LocalPath);
+                SqlConnection sql = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + path + "\\CreditCardInfo.mdf;Integrated Security = True; Connect Timeout = 30");
                 sql.Open();
                 SqlCommand command = new SqlCommand("DELETE FROM [dbo].[Table] WHERE \"Card Number\"=@val1", sql);
 
